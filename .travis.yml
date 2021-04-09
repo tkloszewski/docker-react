@@ -10,3 +10,19 @@ language: generic
 script:
   - docker run -e CI=true tkloszewski/docker-react npm run test
 
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-2"
+    app: "docker"
+    env: "Docker-env"
+    bucket_name: ""
+    bucket_path: ""
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
+
+
+
+
